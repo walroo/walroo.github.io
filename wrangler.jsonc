@@ -1,0 +1,6 @@
+{
+  "name": "walroo-game-stats",
+  "main": "ccu-worker.mjs",
+  "compatibility_date": "2026-11-03",
+  "workers_dev": true
+}

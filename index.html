@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111114" />
+    <meta name="description" content="Walroo — full-stack developer. Coding, modeling, building, animation, and UI design." />
+    <title>walroo</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script type="module" src="games.mjs"></script>
+  </head>
+  <body>
+    <div class="glass-background" aria-hidden="true"></div>
+    <div class="petals" aria-hidden="true">
+      <span style="--left: 5%; --duration: 25s; --delay: -16s; --drift: 65px"></span>
+      <span style="--left: 16%; --duration: 29s; --delay: -3s; --drift: -45px"></span>
+      <span style="--left: 27%; --duration: 23s; --delay: -11s; --drift: 80px"></span>
+      <span style="--left: 38%; --duration: 31s; --delay: -22s; --drift: -60px"></span>
+      <span style="--left: 49%; --duration: 27s; --delay: -7s; --drift: 55px"></span>
+      <span style="--left: 60%; --duration: 24s; --delay: -19s; --drift: -75px"></span>
+      <span style="--left: 71%; --duration: 30s; --delay: -12s; --drift: 50px"></span>
+      <span style="--left: 82%; --duration: 26s; --delay: -5s; --drift: -60px"></span>
+      <span style="--left: 91%; --duration: 32s; --delay: -25s; --drift: 35px"></span>
+      <span style="--left: 96%; --duration: 28s; --delay: -14s; --drift: -90px"></span>
+    </div>
+    <main class="profile" aria-labelledby="name">
+      <p class="intro">hey, i'm</p>
+      <h1 id="name">walroo<span>.</span></h1>
+      <p class="bio">Full-stack developer &amp; Roblox creator.</p>
+      <section class="about" aria-labelledby="about-title">
+        <h2 id="about-title">a little about me</h2>
+        <p>
+          I mostly code, but I also model, build, animate, and design UI. Coding is what I'm best at.
+        </p>
+      </section>
+      <nav class="social-links" aria-label="Social profiles">
+        <a class="social-link" href="https://github.com/walroo" target="_blank" rel="noopener noreferrer">
+        GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <a class="social-link" href="https://x.com/w4lroo" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          X <span aria-hidden="true">↗</span>
+        </a>
+        <a class="social-link" href="https://www.roblox.com/users/337022381/profile" target="_blank" rel="noopener noreferrer">
+          Roblox <span aria-hidden="true">↗</span>
+        </a>
+        <a class="social-link" href="https://discord.com/users/1140283376713076827" target="_blank" rel="noopener noreferrer">
+          Discord <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+      <section class="games" id="games" aria-labelledby="games-title" hidden>
+        <div class="games-heading">
+          <h2 id="games-title">games i've worked on</h2>
+          <p>Stats refresh every minute.</p>
+        </div>
+        <div class="game-list" id="game-list"></div>
+      </section>
+      <template id="game-template">
+        <article class="game-card">
+          <a class="game-link" target="_blank" rel="noopener noreferrer">
+            <img class="game-image" alt="" loading="lazy" width="768" height="432" />
+            <h3 class="game-name"></h3>
+          </a>
+          <div class="game-stats">
+            <span class="game-count" data-state="loading">Checking players…</span>
+            <span class="game-rating">Checking likes…</span>
+          </div>
+          <div class="game-notes">
+            <h4>what i worked on</h4>
+            <p data-field="contribution"></p>
+            <h4>what i feel good about</h4>
+            <p data-field="highlights"></p>
+            <h4>what bothers me</h4>
+            <p data-field="improvements"></p>
+          </div>
+        </article>
+      </template>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
