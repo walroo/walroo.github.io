@@ -1,5 +1,6 @@
 // @ts-check
-import { games, statsEndpoint } from "./portfolio-data.mjs";
+/** @type {typeof import("./portfolio-data.mjs")} */
+const { games, statsEndpoint } = await import("./portfolio-data.mjs" + "?v=2");
 
 /** @type {HTMLElement | null} */
 const section = document.getElementById("games");
@@ -67,7 +68,7 @@ async function refreshCounts() {
   try {
     /** @type {Response} */
     const response = await fetch(statsEndpoint, { signal: controller.signal, cache: "no-store" });
-    if (!response.ok) throw new Error("Stats unavailable");
+    if (!response.ok) throw new Error(`Stats request failed (${response.status})`);
     /** @type {{ checkedAt?: unknown, games?: Array<{ universeId?: unknown, playing?: unknown, likes?: unknown, dislikes?: unknown }> }} */
     const payload = await response.json();
     if (activeRequest !== controller) return;
@@ -101,8 +102,9 @@ async function refreshCounts() {
         }
       }
     }
-  } catch {
+  } catch (error) {
     if (activeRequest !== controller) return;
+    console.warn("Game stats could not be refreshed:", error);
     for (const labels of counters.values()) {
       for (const { count: label, rating } of labels) {
         rating.textContent = "Likes unavailable";
