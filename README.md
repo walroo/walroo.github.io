@@ -20,15 +20,15 @@ Like ratio is likes divided by total votes, shown as a percentage with one decim
 
 ## Hosting live player counts
 
-GitHub Pages cannot run the relay, and Roblox's game metadata API does not allow requests directly from arbitrary website origins. `ccu-worker.mjs` is prepared as a Cloudflare Worker; it serves only the games listed in `portfolio-data.mjs` and does not require Roblox credentials.
+The public site uses `https://realtimestats.onrender.com/api/public/portfolio-stats` on the existing game dashboard backend. It returns only public Roblox counts and votes for explicitly listed universe IDs, without dashboard login or Roblox credentials. Browser access is allowed from `https://walroo.github.io` and the local preview origins.
 
-After choosing and signing into a Cloudflare account, deploy from this directory using Wrangler and the included `wrangler.jsonc`. Then set `statsEndpoint` in `portfolio-data.mjs` to `https://YOUR-WORKER-HOST/api/ccu`. The allowed browser origins are `https://walroo.github.io`, `http://localhost:4173`, and `http://127.0.0.1:4173`.
+To add a featured game, update `portfolio-data.mjs` here and the universe ID list in `server/src/publicPortfolio.ts` in `walroo/game-dashboard`, then deploy both repositories. The dashboard caches stats for 60 seconds and briefly backs off when Roblox is unavailable.
 
-The relay has not been deployed. Its local endpoint works only while the preview server runs.
+`ccu-worker.mjs` and `wrangler.jsonc` remain an optional standalone relay; the production site does not use Cloudflare hosting. The preview server's `/api/ccu` route can still be used by temporarily setting `statsEndpoint` to `/api/ccu` for local testing.
 
 ## GitHub Pages
 
-Publish `index.html`, `styles.css`, `script.js`, `games.mjs`, `portfolio-data.mjs`, `.nojekyll`, and `assets/` at the root of `walroo/walroo.github.io`. In Settings → Pages, select the `main` branch and `/ (root)` folder. Set the production stats endpoint before publishing. The preview server, relay source, tests, and Wrangler configuration are development/deployment files and are not needed in the public site output.
+Publish `index.html`, `styles.css`, `script.js`, `games.mjs`, `portfolio-data.mjs`, `.nojekyll`, and `assets/` at the root of `walroo/walroo.github.io`. In Settings → Pages, select the `main` branch and `/ (root)` folder. The production stats endpoint is configured in `portfolio-data.mjs`. The preview server, relay source, tests, and Wrangler configuration are development/deployment files and are not needed in the public site output.
 
 ## Validation
 

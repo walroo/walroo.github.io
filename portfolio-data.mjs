@@ -24,7 +24,7 @@ export const games = [
   },
 ];
 
-// Set this to the deployed relay URL when publishing to GitHub Pages.
+// Public Roblox stats served by the game dashboard backend.
 /** @type {string} */
-export const statsEndpoint = "/api/ccu";
+export const statsEndpoint = "https://realtimestats.onrender.com/api/public/portfolio-stats";
 
